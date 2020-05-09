@@ -26,6 +26,11 @@ namespace AlarmClock
         {
 
         }
+
+        double timeDifference()
+        {
+
+        }
     };
 }
 
