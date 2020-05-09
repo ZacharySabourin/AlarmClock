@@ -11,7 +11,7 @@ namespace AlarmClock
     public:
         AlarmClock()
         {
-            
+            internals = new ClockInternals();
         }
 
         ~AlarmClock()

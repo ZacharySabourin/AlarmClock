@@ -11,7 +11,7 @@ namespace AlarmClock
         double remainingTime;
 
     public:
-        ClockInternals()
+        ClockInternals(time_t alarmTime)
         {
             currentTime = time(0);
         }
@@ -20,5 +20,7 @@ namespace AlarmClock
         {
 
         }
-};
+    };
 }
+
+
