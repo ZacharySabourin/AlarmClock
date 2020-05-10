@@ -1,56 +1,53 @@
 #include <iostream>
 #include <iomanip>
+#include <unistd.h>
 #include <time.h>
-#include "../headers/AlarmClock.h"
 
-using namespace std;
+class AlarmClock
+{   
+private:
+    time_t currentTime, alarmTime;
+    tm *tmCur, *tmAlarm;
 
-namespace AlarmClock
-{
-    class AlarmClock
+public:
+    AlarmClock(char *alarm)
     {   
-    private:
-        time_t currentTime, alarmTime;
-        tm *tmOne;
+        currentTime - time(0);
+        tmCur = localtime(&currentTime);
 
-    public:
-        AlarmClock(char *alarm)
-        {            
-            if(strptime(alarm, "%b %d %r", tmOne) == NULL)
-                std::cout << "Error formatting time" << std::endl;
+        if(strptime(alarm, "%b %d %r", tmAlarm) == NULL)
+            std::cout << "Error formatting time" << std::endl;
 
-            alarmTime = mktime(tmOne);
-        }
+        alarmTime = mktime(tmAlarm);
+    }
 
-        ~AlarmClock()
+    ~AlarmClock()
+    {
+
+    }
+
+    void displayClock()
+    {
+        system("clear");
+
+        std::cout << "Alarm set for : " << tmAlarm->tm_wday << " " << tmAlarm->tm_mday << " " << tmAlarm->tm_hour << ":" << tmAlarm->tm_min << std::endl;
+        std::cout << std::setfill(' ') << std::setw(55) << "         TIMER         \n"; 
+        std::cout << std::setfill(' ') << std::setw(55) << " --------------------------\n"; 
+        std::cout << std::setfill(' ') << std::setw(29); 
+        std::cout << "| " << std::setfill('0') << std::setw(2) << tmCur->tm_hour << " hrs | "; 
+        std::cout << std::setfill('0') << std::setw(2) << tmCur->tm_min << " min | "; 
+        std::cout << std::setfill('0') << std::setw(2) << tmCur->tm_sec << " sec |" << std::endl; 
+        std::cout << std::setfill(' ') << std::setw(55) << " --------------------------\n";
+    }
+
+    void timer()
+    {
+        while(difftime(alarmTime, currentTime) > 0)
         {
-
-        }
-
-        int timeDifference()
-        {
-            return difftime(alarmTime, time(NULL));
-        }
-
-    //FIX THE TIME
-        void displayClock()
-        {
-            system("clear");
-
-            cout << "Alarm set for : "
-            cout << setfill(' ') << setw(55) << "         TIMER         \n"; 
-            cout << setfill(' ') << setw(55) << " --------------------------\n"; 
-            cout << setfill(' ') << setw(29); 
-            cout << "| " << setfill('0') << setw(2) << tmOne->tm_hour << " hrs | "; 
-            cout << setfill('0') << setw(2) << tmOne->tm_min << " min | "; 
-            cout << setfill('0') << setw(2) << tmOne->tm_sec << " sec |" << endl; 
-            cout << setfill(' ') << setw(55) << " --------------------------\n";
-        }
-
-        void countdown()
-        {
-
-            
-        }
-    };
-}
+            displayClock();
+            currentTime = time(0);
+            tmCur = localtime(&currentTime);
+            sleep(1);
+        }            
+    }
+};

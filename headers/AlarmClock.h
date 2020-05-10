@@ -8,7 +8,8 @@ namespace AlarmClock
     public:
         AlarmClock(char *alarm);
         ~AlarmClock();
-        double timeDifference();
+        void displayClock();
+        void timer();
     };
 }
 

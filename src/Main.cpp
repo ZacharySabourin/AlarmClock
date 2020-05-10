@@ -1,18 +1,17 @@
 #include <iostream>
-#include "../headers/AlarmClock.h"
-
-using namespace AlarmClock;
-using namespace std;
+#include "AlarmClock.cpp"
 
 int main()
 {
-    AlarmClock::AlarmClock *alarmClock;
+    AlarmClock *alarmClock;
     char *time;
 
-    cout << "Set the alarm in the specified format (ex: Mar 21 11:22:43 AM)" << endl << ">";
-    cin >> time;
+    std::cout << "Set the alarm in the specified format (ex: Mar 21 11:22:43 AM)" << std::endl << ">";
+    std::cin >> time;
 
-    alarmClock = new AlarmClock::AlarmClock(time);
+    alarmClock = new AlarmClock(time);
+
+    alarmClock->timer();
 
     return 0;
 }
