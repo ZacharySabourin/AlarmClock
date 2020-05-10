@@ -10,9 +10,8 @@ namespace AlarmClock
     class AlarmClock
     {   
     private:
-        time_t alarmTime;
+        time_t currentTime, alarmTime;
         tm *tmOne;
-        int hours, minutes, seconds;
 
     public:
         AlarmClock(char *alarm)
@@ -28,21 +27,23 @@ namespace AlarmClock
 
         }
 
-        double timeDifference()
+        int timeDifference()
         {
             return difftime(alarmTime, time(NULL));
         }
 
+    //FIX THE TIME
         void displayClock()
         {
             system("clear");
 
+            cout << "Alarm set for : "
             cout << setfill(' ') << setw(55) << "         TIMER         \n"; 
             cout << setfill(' ') << setw(55) << " --------------------------\n"; 
             cout << setfill(' ') << setw(29); 
-            cout << "| " << setfill('0') << setw(2) << hours << " hrs | "; 
-            cout << setfill('0') << setw(2) << minutes << " min | "; 
-            cout << setfill('0') << setw(2) << seconds << " sec |" << endl; 
+            cout << "| " << setfill('0') << setw(2) << tmOne->tm_hour << " hrs | "; 
+            cout << setfill('0') << setw(2) << tmOne->tm_min << " min | "; 
+            cout << setfill('0') << setw(2) << tmOne->tm_sec << " sec |" << endl; 
             cout << setfill(' ') << setw(55) << " --------------------------\n";
         }
 
