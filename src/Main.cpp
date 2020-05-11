@@ -4,13 +4,14 @@
 int main()
 {
     AlarmClock *alarmClock;
-    char *time;
+    string time;
 
-    std::cout << "Set the alarm in the specified format (ex: Mar 21 11:22:43 AM)" << std::endl << ">";
-    std::cin >> time;
+    cout << "Set the alarm in the specified format (ex: YYYY/MM/DD HH:mm)" << endl << ">";
+    getline(cin, time);
 
-    alarmClock = new AlarmClock(time);
+    char *alarm = &time[0];
 
+    alarmClock = new AlarmClock(alarm);
     alarmClock->timer();
 
     return 0;

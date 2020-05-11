@@ -3,20 +3,26 @@
 #include <unistd.h>
 #include <time.h>
 
+using namespace std;
+
 class AlarmClock
 {   
 private:
     time_t currentTime, alarmTime;
-    tm *tmCur, *tmAlarm;
+    struct tm *tmCur;
+    struct tm *tmAlarm;
 
 public:
     AlarmClock(char *alarm)
     {   
-        currentTime - time(0);
+        currentTime = time(0);
+
+        tmCur = new tm();
         tmCur = localtime(&currentTime);
 
-        if(strptime(alarm, "%b %d %r", tmAlarm) == NULL)
-            std::cout << "Error formatting time" << std::endl;
+        tmAlarm = new tm();
+        if(strptime(alarm, "%Y/%m/%d %R", tmAlarm) == NULL)
+            cout << "Error formatting time" << endl;        
 
         alarmTime = mktime(tmAlarm);
     }
@@ -30,14 +36,14 @@ public:
     {
         system("clear");
 
-        std::cout << "Alarm set for : " << tmAlarm->tm_wday << " " << tmAlarm->tm_mday << " " << tmAlarm->tm_hour << ":" << tmAlarm->tm_min << std::endl;
-        std::cout << std::setfill(' ') << std::setw(55) << "         TIMER         \n"; 
-        std::cout << std::setfill(' ') << std::setw(55) << " --------------------------\n"; 
-        std::cout << std::setfill(' ') << std::setw(29); 
-        std::cout << "| " << std::setfill('0') << std::setw(2) << tmCur->tm_hour << " hrs | "; 
-        std::cout << std::setfill('0') << std::setw(2) << tmCur->tm_min << " min | "; 
-        std::cout << std::setfill('0') << std::setw(2) << tmCur->tm_sec << " sec |" << std::endl; 
-        std::cout << std::setfill(' ') << std::setw(55) << " --------------------------\n";
+        cout << "Alarm for: " << put_time(tmAlarm, "%Y/%m/%d %R") << endl;
+        cout << setfill(' ') << setw(44) << "        TIMER         \n"; 
+        cout << setfill(' ') << setw(55) << " ---------------------\n"; 
+        cout << setfill(' ') << setw(29); 
+        cout << "| " << setfill('2') << setw(2) << tmCur->tm_hour << "  :  "; 
+        cout << setfill('2') << setw(2) << tmCur->tm_min << "  :  "; 
+        cout << setfill('2') << setw(2) << tmCur->tm_sec << "   |" << endl; 
+        cout << setfill(' ') << setw(55) << " ---------------------\n";
     }
 
     void timer()
