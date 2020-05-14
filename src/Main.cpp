@@ -4,14 +4,14 @@
 int main()
 {
     AlarmClock *alarmClock;
-    string time;
+    string alarmTime = "2020/05/13 23:00";
 
-    cout << "Set the alarm in the specified format (ex: YYYY/MM/DD HH:mm)" << endl << ">";
-    getline(cin, time);
+    //cout << "Set the alarm in the specified format (ex: YYYY/MM/DD HH:mm)" << endl << ">";
+    //getline(cin, alarmTime);
 
-    char *alarm = &time[0];
+    char *alarmPtr = &alarmTime[0];
 
-    alarmClock = new AlarmClock(alarm);
+    alarmClock = new AlarmClock(alarmPtr);
     alarmClock->timer();
 
     return 0;

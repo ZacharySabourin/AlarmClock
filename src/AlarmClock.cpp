@@ -37,13 +37,13 @@ public:
         system("clear");
 
         cout << "Alarm for: " << put_time(tmAlarm, "%Y/%m/%d %R") << endl;
-        cout << setfill(' ') << setw(44) << "        TIMER         \n"; 
-        cout << setfill(' ') << setw(55) << " ---------------------\n"; 
+        cout << setfill(' ') << setw(50) << "        TIMER         \n"; 
+        cout << setfill(' ') << setw(51) << "------------------------\n"; 
         cout << setfill(' ') << setw(29); 
         cout << "| " << setfill('2') << setw(2) << tmCur->tm_hour << "  :  "; 
         cout << setfill('2') << setw(2) << tmCur->tm_min << "  :  "; 
         cout << setfill('2') << setw(2) << tmCur->tm_sec << "   |" << endl; 
-        cout << setfill(' ') << setw(55) << " ---------------------\n";
+        cout << setfill(' ') << setw(51) << "------------------------\n";
     }
 
     void timer()
@@ -51,9 +51,9 @@ public:
         while(difftime(alarmTime, currentTime) > 0)
         {
             displayClock();
-            currentTime = time(0);
-            tmCur = localtime(&currentTime);
             sleep(1);
+            currentTime = time(0);
+            tmCur = localtime(&currentTime);        
         }            
     }
 };
