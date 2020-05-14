@@ -36,7 +36,7 @@ public:
     {
         system("clear");
 
-        cout << "Alarm for: " << put_time(tmAlarm, "%Y/%m/%d %R") << endl;
+        cout << "Alarm for: " << asctime(tmAlarm) << endl;
         cout << setfill(' ') << setw(50) << "        TIMER         \n"; 
         cout << setfill(' ') << setw(51) << "------------------------\n"; 
         cout << setfill(' ') << setw(29); 

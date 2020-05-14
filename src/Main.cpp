@@ -4,10 +4,10 @@
 int main()
 {
     AlarmClock *alarmClock;
-    string alarmTime = "2020/05/13 23:00";
+    string alarmTime;
 
-    //cout << "Set the alarm in the specified format (ex: YYYY/MM/DD HH:mm)" << endl << ">";
-    //getline(cin, alarmTime);
+    cout << "Set the alarm in the specified format (ex: YYYY/MM/DD HH:mm)" << endl << ">";
+    getline(cin, alarmTime);
 
     char *alarmPtr = &alarmTime[0];
 
@@ -16,4 +16,3 @@ int main()
 
     return 0;
 }
-
