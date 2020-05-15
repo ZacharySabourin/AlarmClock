@@ -8,23 +8,24 @@ using namespace std;
 class AlarmClock
 {   
 private:
-    time_t currentTime, alarmTime;
+    time_t alarmTime;
+    time_t currentTime;
     struct tm *tmCur;
     struct tm *tmAlarm;
 
 public:
     AlarmClock(char *alarm)
     {   
+        tmAlarm = new tm();
+        strptime(alarm, "%Y/%m/%d %R", tmAlarm);
+        tmAlarm->tm_isdst = -1;
+
+        alarmTime = mktime(tmAlarm);
         currentTime = time(0);
 
         tmCur = new tm();
         tmCur = localtime(&currentTime);
-
-        tmAlarm = new tm();
-        if(strptime(alarm, "%Y/%m/%d %R", tmAlarm) == NULL)
-            cout << "Error formatting time" << endl;        
-
-        alarmTime = mktime(tmAlarm);
+        tmCur->tm_isdst = -1;     
     }
 
     ~AlarmClock()
