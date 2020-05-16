@@ -42,14 +42,14 @@ public:
         cout << setfill(' ') << setw(51) << "------------------------\n"; 
         cout << setfill(' ') << setw(29); 
         cout << "| " << setfill('2') << setw(2) << tmCur->tm_hour << "  :  "; 
-        cout << setfill('2') << setw(2) << tmCur->tm_min << "  :  "; 
-        cout << setfill('2') << setw(2) << tmCur->tm_sec << "   |" << endl; 
+        cout << setfill('0') << setw(2) << tmCur->tm_min << "  :  "; 
+        cout << setfill('0') << setw(2) << tmCur->tm_sec << "   |" << endl; 
         cout << setfill(' ') << setw(51) << "------------------------\n";
     }
 
     void timer()
     {
-        while(difftime(alarmTime, currentTime) > 0)
+        while(difftime(alarmTime, currentTime) >= 0)
         {
             displayClock();
             sleep(1);
