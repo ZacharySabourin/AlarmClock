@@ -30,7 +30,8 @@ public:
 
     ~AlarmClock()
     {
-
+        delete tmAlarm;
+        delete tmCur;
     }
 
     void displayClock()
@@ -38,8 +39,8 @@ public:
         system("clear");
 
         cout << "Alarm for: " << asctime(tmAlarm) << endl;
-        cout << setfill(' ') << setw(50) << "        TIMER         \n"; 
-        cout << setfill(' ') << setw(51) << "------------------------\n"; 
+        cout << setfill(' ') << setw(50) << "        TIMER         " << endl; 
+        cout << setfill(' ') << setw(51) << "------------------------" << endl; 
         cout << setfill(' ') << setw(29); 
         cout << "| " << setfill('2') << setw(2) << tmCur->tm_hour << "  :  "; 
         cout << setfill('0') << setw(2) << tmCur->tm_min << "  :  "; 
@@ -55,6 +56,8 @@ public:
             sleep(1);
             currentTime = time(0);
             tmCur = localtime(&currentTime);        
-        }            
+        }  
+
+        cout << endl << "TIME IS UP!" << endl;
     }
 };

@@ -1,16 +1,10 @@
-#ifndef ALARM_CLOCK_H
-#define ALARM_CLOCK_H
+#pragma once
 
-namespace AlarmClock
+class AlarmClock
 {
-    class AlarmClock
-    {
-    public:
-        AlarmClock(char *alarm);
-        ~AlarmClock();
-        void displayClock();
-        void timer();
-    };
-}
-
-#endif
+public:
+    AlarmClock(char *alarm);
+    ~AlarmClock();
+    void displayClock();
+    void timer();
+};

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <regex>
-#include "AlarmClock.cpp"
+#include "../headers/AlarmClock.h"
+
+using namespace std;
 
 int main()
 {
@@ -18,6 +20,9 @@ int main()
 
     alarmClock = new AlarmClock(alarmPtr);
     alarmClock->timer();
+
+    delete alarmPtr;
+    delete alarmClock;
 
     return 0;
 }
