@@ -18,7 +18,6 @@ int main()
 
 void startAlarm()
 {
-    AlarmClock *alarmClock;
     std::string alarmTime;
     std::regex timePattern("^\\d{4}\\/\\d{1,2}\\/\\d{1,2}\\s([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
 
@@ -30,16 +29,14 @@ void startAlarm()
     
     char *alarmPtr = &alarmTime[0];
 
-    alarmClock = new AlarmClock(alarmPtr);
+    AlarmClock *alarmClock = new AlarmClock(alarmPtr);
     alarmClock->timer();
-
-    delete alarmPtr;
 }
 
 void startMusic()
 {
-    std::string fileName = "../urls.txt";
-    std::ifstream songFile(fileName);
+    std::ifstream songFile;
+    songFile.open("urls.txt");
 
     if(!songFile.is_open())
         std::cout << "Error opening file" << std::endl;

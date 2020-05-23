@@ -11,11 +11,11 @@ MusicPlayer::MusicPlayer(std::vector<std::string> &songList)
 
 MusicPlayer::~MusicPlayer()
 {
-
+    songs.clear();
 }
 
 void MusicPlayer::playSong()
 {
-    int index = (rand() % songs.size()) + 1;
+    int index = (rand() % songs.size());
     songs[index]->playSong();
 }

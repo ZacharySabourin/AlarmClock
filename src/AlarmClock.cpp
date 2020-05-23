@@ -20,8 +20,7 @@ AlarmClock::AlarmClock(char *alarm)
 
 AlarmClock::~AlarmClock()
 {
-    delete tmAlarm;
-    delete tmCur;
+
 }
 
 void AlarmClock::displayClock()

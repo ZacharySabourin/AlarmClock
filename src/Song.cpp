@@ -13,9 +13,15 @@ Song::~Song()
 
 void Song::playSong()
 {
-    std::string command = "xdg -open ";
+    /*
+        WSL: cmd.exe /C start <link>
+        MacOS: open <link>
+        Windows: start <link>
+        Linux: xdg-open <link>
+    */
+    std::string command = "cmd.exe /C start ";
     command.append(songUrl);
+
     char *commandPtr = &command[0];
     system(commandPtr);
-    delete commandPtr;
 }
