@@ -1,14 +1,12 @@
 #include <iostream>
 
-using namespace std;
-
 class Song
 {
     private:
-        string songUrl;
+        std::string songUrl;
 
     public:
-        Song(string songLink)
+        Song(std::string songLink)
         {
             songUrl = songLink;
         }

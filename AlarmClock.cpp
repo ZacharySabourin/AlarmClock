@@ -3,8 +3,6 @@
 #include <unistd.h>
 #include <time.h>
 
-using namespace std;
-
 class AlarmClock
 {   
     private:
@@ -14,10 +12,10 @@ class AlarmClock
         struct tm *tmAlarm;
 
     public:
-        AlarmClock(char *alarm)
+        AlarmClock(char &alarm)
         {   
             tmAlarm = new tm();
-            strptime(alarm, "%Y/%m/%d %R", tmAlarm);
+            strptime(&alarm, "%Y/%m/%d %R", tmAlarm);
             tmAlarm->tm_isdst = -1;
 
             alarmTime = mktime(tmAlarm);
@@ -38,14 +36,14 @@ class AlarmClock
         {
             system("clear");
 
-            cout << "Alarm for: " << asctime(tmAlarm) << endl;
-            cout << setfill(' ') << setw(50) << "        TIMER         " << endl; 
-            cout << setfill(' ') << setw(51) << "------------------------" << endl; 
-            cout << setfill(' ') << setw(29); 
-            cout << "| " << setfill('2') << setw(2) << tmCur->tm_hour << "  :  "; 
-            cout << setfill('0') << setw(2) << tmCur->tm_min << "  :  "; 
-            cout << setfill('0') << setw(2) << tmCur->tm_sec << "   |" << endl; 
-            cout << setfill(' ') << setw(51) << "------------------------\n";
+            std::cout << "Alarm for: " << asctime(tmAlarm) << std::endl;
+            std::cout << std::setfill(' ') << std::setw(50) << "        TIMER         " << std::endl; 
+            std::cout << std::setfill(' ') << std::setw(51) << "------------------------" << std::endl; 
+            std::cout << std::setfill(' ') << std::setw(29); 
+            std::cout << "| " << std::setfill('2') << std::setw(2) << tmCur->tm_hour << "  :  "; 
+            std::cout << std::setfill('0') << std::setw(2) << tmCur->tm_min << "  :  "; 
+            std::cout << std::setfill('0') << std::setw(2) << tmCur->tm_sec << "   |" << std::endl; 
+            std::cout << std::setfill(' ') << std::setw(51) << "------------------------\n";
         }
 
         void timer()
@@ -58,6 +56,6 @@ class AlarmClock
                 tmCur = localtime(&currentTime);        
             }  
 
-            cout << endl << "TIME IS UP!" << endl;
+            std::cout << std::endl << "TIME IS UP!" << std::endl;
         }
 };

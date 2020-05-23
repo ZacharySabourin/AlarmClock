@@ -1,17 +1,15 @@
 CXX = g++
 CXXFLAGS = -Wall -g
+HDIR = ./headers/
 
-main : Main.o AlarmClock.o Song.o MusicPlayer.o
-	$(CXX) $(CXXFLAGS) -o Main.o AlarmClock.o Song.o MusicPlayer.o
+objects = Main.o AlarmClock.o Song.o MusicPlayer.o
 
-main.o : Main.cpp 
+main : $(objects)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o main
 
-edit : $(objects)
-	g++ -c -o edit $(objects)
-
-Main.o : /headers/AlarmClock.h /headers/MusicPlayer.h
-MusicPlayer.o : /headers/Song.h
+main.o : $(HDIR)AlarmClock.hpp $(HDIR)MusicPlayer.hpp
+MusicPlayer.o : $(HDIR)Song.hpp
 
 .PHONY : clean
 clean :
-	rm edit $(objects)
+	rm main $(objects)

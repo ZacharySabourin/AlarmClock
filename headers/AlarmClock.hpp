@@ -3,8 +3,8 @@
 class AlarmClock
 {
     public:
-        AlarmClock(char *alarm);
+        AlarmClock(char &alarm);
         ~AlarmClock();
-        void displayClock();
+        void displayclock();
         void timer();
 };

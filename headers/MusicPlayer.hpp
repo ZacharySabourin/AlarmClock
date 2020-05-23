@@ -3,6 +3,6 @@
 class MusicPlayer
 {
     public:
-        MusicPlayer(vector<string> songList);
+        MusicPlayer(std::vector<std::string> &songList);
         ~MusicPlayer();
 };
