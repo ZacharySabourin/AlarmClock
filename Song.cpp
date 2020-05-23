@@ -18,6 +18,10 @@ class Song
 
         void playSong()
         {
-            system("xdg -open ");
+            std::string command = "xdg -open ";
+            command.append(songUrl);
+            char *commandPtr = &command[0];
+            system(commandPtr);
+            delete commandPtr;
         }
 };

@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include <fstream>
-#include "./headers/Song.hpp"
+#include "./headers/Song.h"
 
 class MusicPlayer
 {
@@ -19,5 +18,11 @@ class MusicPlayer
         ~MusicPlayer()
         {
 
+        }
+
+        void playSong()
+        {
+            int index = (rand() % songs.size()) + 1;
+            songs[index]->playSong();
         }
 };

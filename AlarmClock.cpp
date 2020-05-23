@@ -12,10 +12,10 @@ class AlarmClock
         struct tm *tmAlarm;
 
     public:
-        AlarmClock(char &alarm)
+        AlarmClock(char *alarm)
         {   
             tmAlarm = new tm();
-            strptime(&alarm, "%Y/%m/%d %R", tmAlarm);
+            strptime(alarm, "%Y/%m/%d %R", tmAlarm);
             tmAlarm->tm_isdst = -1;
 
             alarmTime = mktime(tmAlarm);

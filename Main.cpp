@@ -2,13 +2,11 @@
 #include <regex>
 #include <fstream>
 #include <vector>
-#include "./headers/AlarmClock.hpp"
-#include "./headers/MusicPlayer.hpp"
-
+#include "./headers/AlarmClock.h"
+#include "./headers/MusicPlayer.h"
 
 void startAlarm();
 void startMusic();
-int randomNumber(int &length);
 
 int main()
 {
@@ -32,7 +30,7 @@ void startAlarm()
     
     char *alarmPtr = &alarmTime[0];
 
-    alarmClock = new AlarmClock(*alarmPtr);
+    alarmClock = new AlarmClock(alarmPtr);
     alarmClock->timer();
 
     delete alarmPtr;
@@ -58,11 +56,6 @@ void startMusic()
         songFile.close();
 
         MusicPlayer *player = new MusicPlayer(songList);
-        int index;
+        player->playSong();
     }
-}
-
-int randomNumber(int &length)
-{
-    return 0;
 }
