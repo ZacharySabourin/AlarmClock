@@ -1,10 +1,24 @@
 #include <iostream>
 #include <regex>
+#include <fstream>
+#include <vector>
 #include "../headers/AlarmClock.h"
+#include "../headers/MusicPlayer.h"
 
 using namespace std;
 
+void startAlarm();
+void startMusic();
+
 int main()
+{
+    startAlarm();
+    startMusic();
+
+    return 0;
+}
+
+void startAlarm()
 {
     AlarmClock *alarmClock;
     string alarmTime;
@@ -23,6 +37,32 @@ int main()
 
     delete alarmPtr;
     delete alarmClock;
+}
 
-    return 0;
+void startMusic()
+{
+    string fileName = "../urls.txt";
+    ifstream songFile(fileName);
+
+    if(!songFile.is_open())
+        cout << "Error opening file" << endl;
+    
+    else
+    {
+        vector<string> songList;
+        string song;
+
+        while(getline(songFile, song))
+            songList.push_back(song);
+
+        songFile.close();
+
+        MusicPlayer *player = new MusicPlayer(&songList);
+        int index;
+    }
+}
+
+int randomNumber(int &length)
+{
+
 }

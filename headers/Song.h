@@ -3,6 +3,7 @@
 class Song
 {
     public:
-        Song();
+        Song(string song);
         ~Song();
+        void playSong();
 };
