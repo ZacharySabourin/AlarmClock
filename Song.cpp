@@ -1,27 +1,23 @@
 #include <iostream>
+#include "./headers/Song.h"
 
-class Song
+std::string songUrl;
+
+Song::Song(std::string songLink)
 {
-    private:
-        std::string songUrl;
+    songUrl = songLink;
+}
 
-    public:
-        Song(std::string songLink)
-        {
-            songUrl = songLink;
-        }
+Song::~Song()
+{
 
-        ~Song()
-        {
+}
 
-        }
-
-        void playSong()
-        {
-            std::string command = "xdg -open ";
-            command.append(songUrl);
-            char *commandPtr = &command[0];
-            system(commandPtr);
-            delete commandPtr;
-        }
-};
+void Song::playSong()
+{
+    std::string command = "xdg -open ";
+    command.append(songUrl);
+    char *commandPtr = &command[0];
+    system(commandPtr);
+    delete commandPtr;
+}

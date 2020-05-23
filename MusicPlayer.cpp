@@ -1,28 +1,24 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include "./headers/MusicPlayer.h"
 #include "./headers/Song.h"
 
-class MusicPlayer
+std::vector<std::unique_ptr<Song>> songs;
+
+MusicPlayer::MusicPlayer(std::vector<std::string> &songList)
 {
-    private:
-        std::vector<std::unique_ptr<Song>> songs;
+    for(auto it = songList.begin(); it != songList.end(); ++it)
+        songs.push_back(std::make_unique<Song>(*it));
+}
 
-    public:
-        MusicPlayer(std::vector<std::string> &songList)
-        {
-            for(auto it = songList.begin(); it != songList.end(); ++it)
-                songs.push_back(std::make_unique<Song>(*it));
-        }
+MusicPlayer::~MusicPlayer()
+{
 
-        ~MusicPlayer()
-        {
+}
 
-        }
-
-        void playSong()
-        {
-            int index = (rand() % songs.size()) + 1;
-            songs[index]->playSong();
-        }
-};
+void MusicPlayer::playSong()
+{
+    int index = (rand() % songs.size()) + 1;
+    songs[index]->playSong();
+}
