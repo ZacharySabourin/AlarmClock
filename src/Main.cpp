@@ -2,8 +2,8 @@
 #include <regex>
 #include <fstream>
 #include <vector>
-#include "./headers/AlarmClock.h"
-#include "./headers/MusicPlayer.h"
+#include "../headers/AlarmClock.h"
+#include "../headers/MusicPlayer.h"
 
 void startAlarm();
 void startMusic();
@@ -34,7 +34,6 @@ void startAlarm()
     alarmClock->timer();
 
     delete alarmPtr;
-    delete alarmClock;
 }
 
 void startMusic()

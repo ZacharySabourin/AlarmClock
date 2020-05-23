@@ -3,6 +3,12 @@
 
 class AlarmClock
 {
+    private:
+        time_t alarmTime;
+        time_t currentTime;
+        struct tm *tmCur;
+        struct tm *tmAlarm; 
+        
     public:
         AlarmClock(char *alarm);
         ~AlarmClock();

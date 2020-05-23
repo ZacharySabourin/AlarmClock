@@ -1,7 +1,5 @@
 #include <iostream>
-#include "./headers/Song.h"
-
-std::string songUrl;
+#include "../headers/Song.h"
 
 Song::Song(std::string songLink)
 {

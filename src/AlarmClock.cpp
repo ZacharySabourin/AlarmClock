@@ -2,12 +2,7 @@
 #include <iomanip>
 #include <unistd.h>
 #include <time.h>
-#include "./headers/AlarmClock.h"
-
-time_t alarmTime;
-time_t currentTime;
-struct tm *tmCur;
-struct tm *tmAlarm;
+#include "../headers/AlarmClock.h"
 
 AlarmClock::AlarmClock(char *alarm)
 {   

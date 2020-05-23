@@ -1,10 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "./headers/MusicPlayer.h"
-#include "./headers/Song.h"
-
-std::vector<std::unique_ptr<Song>> songs;
+#include "../headers/MusicPlayer.h"
 
 MusicPlayer::MusicPlayer(std::vector<std::string> &songList)
 {

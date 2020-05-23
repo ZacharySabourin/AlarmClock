@@ -7,6 +7,9 @@
 
 class MusicPlayer
 {
+    private:
+       std::vector<std::unique_ptr<Song>> songs;
+
     public:
         MusicPlayer(std::vector<std::string> &songList);
         ~MusicPlayer();
