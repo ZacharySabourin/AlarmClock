@@ -16,6 +16,7 @@ MusicPlayer::~MusicPlayer()
 
 void MusicPlayer::playSong()
 {
+    srand((unsigned) time(0));
     int index = (rand() % songs.size());
     songs[index]->playSong();
 }

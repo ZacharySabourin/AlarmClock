@@ -35,8 +35,7 @@ void startAlarm()
 
 void startMusic()
 {
-    std::ifstream songFile;
-    songFile.open("urls.txt");
+    std::ifstream songFile("urls.txt");
 
     if(!songFile.is_open())
         std::cout << "Error opening file" << std::endl;

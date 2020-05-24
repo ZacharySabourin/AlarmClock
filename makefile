@@ -5,8 +5,8 @@ SRC = ./src
 
 OBJECTS = $(SRC)/Main.o $(SRC)/AlarmClock.o $(SRC)/Song.o $(SRC)/MusicPlayer.o
 
-clock : $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $(OBJECTS) -o clock
+timer : $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o timer
 
 Main.o : $(HDIR)/AlarmClock.h $(HDIR)/MusicPlayer.h
 MusicPlayer.o : $(HDIR)/MusicPlayer.h
@@ -15,4 +15,4 @@ Song.o : $(HDIR)/Song.h
 
 .PHONY : clean
 clean :
-	rm clock $(OBJECTS)
+	rm timer $(OBJECTS)
