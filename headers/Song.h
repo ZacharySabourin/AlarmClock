@@ -4,14 +4,14 @@
 #include <string>
 
 class Song
-{
-    private:
-        std::string songUrl; 
-        
+{      
     public:
-        Song(std::string songLink);
+        Song(std::string &songLink);
         ~Song();
         void playSong();
+
+    private:
+        std::string songUrl; 
 };
 
 #endif

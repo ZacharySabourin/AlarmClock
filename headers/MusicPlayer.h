@@ -3,17 +3,19 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include "Song.h"
 
 class MusicPlayer
 {
-    private:
-       std::vector<std::unique_ptr<Song>> songs;
-
     public:
-        MusicPlayer(std::vector<std::string> &songList);
+        MusicPlayer();
         ~MusicPlayer();
         void playSong();
+        bool loadPlayer();
+
+    private:
+        std::vector<std::unique_ptr<Song>> songs;
 };
 
 #endif

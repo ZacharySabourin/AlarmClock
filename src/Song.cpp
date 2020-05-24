@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../headers/Song.h"
 
-Song::Song(std::string songLink)
+Song::Song(std::string &songLink)
 {
     songUrl = songLink;
 }
@@ -14,14 +14,14 @@ Song::~Song()
 void Song::playSong()
 {
     /*
-        WSL: cmd.exe /C start <link>
-        MacOS: open <link>
-        Windows: start <link>
-        Linux: xdg-open <link>
+        wslCommand = "cmd.exe /C start ";
+        macOSCommand = "open ";
+        windowsCommand = "start ";
+        linuxCommand = "xdg-open ";
     */
-    std::string command = "cmd.exe /C start ";
-    command.append(songUrl);
+    std::string wslCommand = "cmd.exe /C start ";
+    wslCommand.append(songUrl);
 
-    char *commandPtr = &command[0];
+    char *commandPtr = &wslCommand[0];
     system(commandPtr);
 }
